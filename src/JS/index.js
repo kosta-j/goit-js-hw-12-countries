@@ -11,14 +11,18 @@ const refs = {
 refs.searchInput.addEventListener(
   'input',
   debounce(e => {
-    const inputValue = e.target.value;
-    fetchCountries(inputValue).then(render);
+    onSearchInput(e.target.value);
   }, 500),
 );
 
+function onSearchInput(input) {
+  fetchCountries(input).then(render).catch(error);
+}
+
 function render(countries) {
   const countryMarkup = countryList(countries);
-  refs.countryContainer.innerHTML = countryMarkup;
+  refs.countryContainer.innerHTML = '';
+  refs.countryContainer.insertAdjacentHTML('beforeend', countryMarkup);
 }
 
 function error(err) {
