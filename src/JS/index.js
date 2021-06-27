@@ -1,6 +1,15 @@
 import '../sass/main.scss';
 import fetchCountries from './fetchCountries';
-import templateFunction from '../teplate/country-list';
-// document.body.innerHTML = templateFunction();
+import countryList from '../teplate/country-list';
 
-fetchCountries('col');
+const refs = {
+  searchInput: document.querySelector('.search-input'),
+  countryContainer: document.querySelector('.js-countries'),
+};
+
+fetchCountries('col').then(render);
+
+function render(countries) {
+  const countryMarkup = countryList(countries);
+  refs.countryContainer.innerHTML = countryMarkup;
+}
