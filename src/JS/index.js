@@ -7,7 +7,10 @@ const refs = {
   countryContainer: document.querySelector('.js-countries'),
 };
 
-fetchCountries('col').then(render);
+refs.searchInput.addEventListener('input', e => {
+  const inputValue = e.target.value;
+  fetchCountries(inputValue).then(render);
+});
 
 function render(countries) {
   const countryMarkup = countryList(countries);
