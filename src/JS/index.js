@@ -1,6 +1,7 @@
 import '../sass/main.scss';
 import fetchCountries from './fetchCountries';
 import countryList from '../teplate/country-list';
+import singleCountry from '../teplate/single-country';
 var debounce = require('lodash.debounce');
 
 const refs = {
@@ -17,12 +18,24 @@ refs.searchInput.addEventListener(
 
 function onSearchInput(input) {
   fetchCountries(input).then(render).catch(error);
+  fetchCountries(input).then(console.log);
 }
 
 function render(countries) {
-  const countryMarkup = countryList(countries);
   refs.countryContainer.innerHTML = '';
-  refs.countryContainer.insertAdjacentHTML('beforeend', countryMarkup);
+  if (countries.length > 10) {
+    return;
+  }
+  if (countries.length > 1 && countries.length <= 10) {
+    let countryMarkup = countryList(countries);
+    refs.countryContainer.insertAdjacentHTML('beforeend', countryMarkup);
+    return;
+  }
+  if ((countries.length = 1)) {
+    let countryMarkup = singleCountry(countries);
+    refs.countryContainer.insertAdjacentHTML('beforeend', countryMarkup);
+    return;
+  }
 }
 
 function error(err) {
