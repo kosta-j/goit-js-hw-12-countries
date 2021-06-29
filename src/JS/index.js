@@ -3,7 +3,9 @@ import fetchCountries from './fetchCountries';
 import countryList from '../teplate/country-list';
 import singleCountry from '../teplate/single-country';
 import debounce from 'lodash.debounce';
-// var debounce = require('lodash.debounce');
+import { defaults, error } from '@pnotify/core';
+import '@pnotify/core/dist/PNotify.css';
+import '@pnotify/core/dist/BrightTheme.css';
 
 const refs = {
   searchInput: document.querySelector('.search-input'),
@@ -18,13 +20,15 @@ refs.searchInput.addEventListener(
 );
 
 function onSearchInput(input) {
-  fetchCountries(input).then(render).catch(error);
-  fetchCountries(input).then(console.log);
+  fetchCountries(input).then(render).catch(errorHandle);
 }
 
 function render(countries) {
   refs.countryContainer.innerHTML = '';
   if (countries.length > 10) {
+    error({
+      text: 'Too many matches found. Please enter a more specific query',
+    });
     return;
   }
   if (countries.length > 1 && countries.length <= 10) {
@@ -39,6 +43,6 @@ function render(countries) {
   }
 }
 
-function error(err) {
+function errorHandle(err) {
   console.log(err);
 }

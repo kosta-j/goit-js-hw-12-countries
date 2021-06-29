@@ -1,6 +1,4 @@
 .container {
-  outline: 1px solid teal;
-
   // общие стили контейнера:
   width: 100%;
   padding-top: 10px;
@@ -12,14 +10,14 @@
   @include screen('mobile') {
     width: 480px;
   }
-  // @include screen('tablet') {
-  //   width: 768px;
-  //   padding-left: 36px;
-  //   padding-right: 36px;
-  // }
-  // @include screen('desktop') {
-  //   width: 1280px;
-  //   padding-left: 114px;
-  //   padding-right: 114px;
-  // }
+  @include screen('tablet') {
+    width: 768px;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+  @include screen('desktop') {
+    width: 1280px;
+    padding-left: 114px;
+    padding-right: 114px;
+  }
 }
