@@ -2,7 +2,8 @@ import '../sass/main.scss';
 import fetchCountries from './fetchCountries';
 import countryList from '../teplate/country-list';
 import singleCountry from '../teplate/single-country';
-var debounce = require('lodash.debounce');
+import debounce from 'lodash.debounce';
+// var debounce = require('lodash.debounce');
 
 const refs = {
   searchInput: document.querySelector('.search-input'),

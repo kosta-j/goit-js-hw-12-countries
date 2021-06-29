@@ -1,17 +1,17 @@
 {{#each this}}
-  <h2 class='country-name'>{{name}}</h2>
+  <h2 class='country-title'>{{name}}</h2>
   <div class='country-wrapper'>
     <ul class='country-details'>
       <li class='country-details-item'>
-        <span class='bold'>Capital:</span>
+        <h3 class='bold'>Capital:</h3>
         {{capital}}
       </li>
       <li class='country-details-item'>
-        <span class='bold'>Population:</span>
+        <h3 class='bold'>Population:</h3>
         {{population}}
       </li>
       <li class='country-details-item'>
-        <span class='bold'>Languages:</span>
+        <h3 class='bold'>Languages:</h3>
         <ul class='lang-list'>
           {{#each languages}}
             <li class='lang-item'>{{name}}</li>
@@ -19,7 +19,7 @@
         </ul>
       </li>
     </ul>
-    <div class='flag-container'>
+    <div class='country-flag'>
       <img src={{flag}} alt={{name}} width='100' />
     </div>
   </div>

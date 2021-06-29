@@ -1,0 +1,34 @@
+/* ============================== */
+
+/* RESETS */
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+/* RESETS end */
+/* ============================== */
+
+body {
+  margin: auto;
+  background: linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+    linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center, $dot-color;
+  background-size: $dot-space $dot-space;
+
+  font-weight: 400;
+  font-family: 'Titillium Web', sans-serif;
+  line-height: 1.7;
+}
