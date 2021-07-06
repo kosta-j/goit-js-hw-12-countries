@@ -15,13 +15,17 @@ const refs = {
 
 refs.searchInput.addEventListener('input', debounce(onSearchInput, 500));
 
-function onSearchInput(e) {
+async function onSearchInput(e) {
   const searchQuery = e.target.value;
   if (!searchQuery) {
     return;
   }
-
-  fetchCountries(searchQuery).then(render).catch(console.error);
+  try {
+    const countries = await fetchCountries(searchQuery);
+    render(countries);
+  } catch {
+    console.error;
+  }
 }
 
 function render(countries) {
